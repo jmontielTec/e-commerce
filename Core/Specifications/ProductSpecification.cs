@@ -12,7 +12,7 @@ public class ProductSpecification : BaseSpecification<Product>
     {
         ApplyPaging(specParams.Skip, specParams.PageSize);
 
-        switch (specParams.Sort)
+        switch (specParams.Sort?.ToLower())
         {
             case "priceasc":
                 AddOrderBy(p => p.Price);
