@@ -1,17 +1,18 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Product } from '../../shared/models/product';
-import { ShopService } from '../../core/services/shop';
-import { ProductItem } from "./product-item/product-item";
-import { MatDialog } from '@angular/material/dialog';
-import { FiltersDialog } from './filters-dialog/filters-dialog';
+import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog'; 
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { MatListOption, MatSelectionList, MatSelectionListChange } from '@angular/material/list';
-import { ShopParams } from '../../shared/models/shopParams';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+
 import { Pagination } from '../../shared/models/pagination';
-import { FormsModule } from '@angular/forms';
+import { ShopParams } from '../../shared/models/shopParams';
+import { Product } from '../../shared/models/product';
+import { ShopService } from '../../core/services/shop';
+import { ProductItem } from "./product-item/product-item"; 
+import { FiltersDialog } from './filters-dialog/filters-dialog';
 
 @Component({
   selector: 'app-shop',
@@ -42,15 +43,12 @@ export class Shop implements OnInit {
     { value: 'priceDesc', viewValue: 'Price: High to Low', name: 'Price: High to Low' }
   ];
 
- shopParams = new ShopParams();
- pageSizeOptions = [5, 10, 15, 20];
-
+  shopParams = new ShopParams();
+  pageSizeOptions = [5, 10, 15, 20];
 
   ngOnInit(): void {
     this.initializeShop();
   }
-
-  
 
   initializeShop() {
     this.shopService.getBrands();
